@@ -24,7 +24,7 @@ if [ $# -gt 0 ]; then
         shift 1
         echo "Running code style fix..."
         docker compose exec php ./vendor/bin/rector process
-        docker compose exec php ./vendor/bin/phpinsights --fix
+        docker compose exec php ./vendor/bin/phpinsights --no-interaction --fix
         docker compose exec php ./vendor/bin/php-cs-fixer fix
     elif [ "$1" == "test" ]; then
         shift 1
