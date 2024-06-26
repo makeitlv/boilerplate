@@ -113,6 +113,7 @@
         "phpstan/phpstan-strict-rules": "^1.6",
         "phpstan/phpstan-symfony": "^1.4",
         "phpunit/phpunit": "^9.5",
+        "rector/rector": "^1.1",
         "squizlabs/php_codesniffer": "*",
         "symfony/browser-kit": "7.1.*",
         "symfony/css-selector": "7.1.*",
