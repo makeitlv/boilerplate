@@ -13,7 +13,7 @@ if [ $# -gt 0 ]; then
     elif [ "$1" == "qa" ]; then
         shift 1
         echo "Running php fixer..."
-        docker compose exec php ./vendor/bin/php-cs-fixer check -v
+        docker compose exec php ./vendor/bin/php-cs-fixer fix --dry-run --diff
         echo "Running phpstan..."
         docker compose exec php ./vendor/bin/phpstan analyse
         echo "Running phpinsights..."
