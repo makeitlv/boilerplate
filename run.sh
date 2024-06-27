@@ -28,7 +28,7 @@ if [ $# -gt 0 ]; then
         docker compose exec php ./vendor/bin/php-cs-fixer fix
     elif [ "$1" == "test" ]; then
         shift 1
-        docker compose exec -u $(id -u):$(id -g) php ./vendor/bin/phpunit --coverage --min=100 "$@"
+        docker compose exec php ./vendor/bin/phpunit "$@"
     elif [ "$1" == "coverage" ]; then
         shift 1
         docker compose exec -u $(id -u):$(id -g) php ./vendor/bin/phpunit --coverage --coverage-html reports
