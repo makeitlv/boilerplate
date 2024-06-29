@@ -42,6 +42,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PANTHER_NO_SANDBOX 1
 # Not mandatory, but recommended
 ENV PANTHER_CHROME_ARGUMENTS='--disable-dev-shm-usage'
+# hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends chromium chromium-driver && rm -rf /var/lib/apt/lists/*
 
 # Firefox and geckodriver
