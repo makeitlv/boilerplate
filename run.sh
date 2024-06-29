@@ -31,7 +31,7 @@ if [ $# -gt 0 ]; then
         docker compose exec php ./vendor/bin/phpunit "$@"
     elif [ "$1" == "coverage" ]; then
         shift 1
-        docker compose exec -u $(id -u):$(id -g) php ./vendor/bin/phpunit --coverage --coverage-html reports
+        docker compose exec php ./vendor/bin/phpunit --coverage-html public/reports
     else
         echo "Unknown command"
     fi

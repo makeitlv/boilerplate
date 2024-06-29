@@ -6,11 +6,6 @@ namespace App\Tests\Feature;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-/**
- * @internal
- *
- * @coversNothing
- */
 class ExampleTest extends WebTestCase
 {
     public function testSomething(): void
