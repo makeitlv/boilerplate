@@ -28,10 +28,13 @@ if [ $# -gt 0 ]; then
         docker compose exec php ./vendor/bin/php-cs-fixer fix
     elif [ "$1" == "test" ]; then
         shift 1
-        docker compose exec php ./vendor/bin/phpunit "$@"
+        docker compose exec php ./vendor/bin/phpunit --testsuite Unit,Feature "$@"
+    elif [ "$1" == "btest" ]; then
+		shift 1
+		docker compose exec php ./vendor/bin/phpunit --testsuite Browser "$@"
     elif [ "$1" == "coverage" ]; then
         shift 1
-        docker compose exec php ./vendor/bin/phpunit --coverage-html public/reports
+        docker compose exec php ./vendor/bin/phpunit --testsuite Unit,Feature --coverage-html public/reports
     else
         echo "Unknown command"
     fi
