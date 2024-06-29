@@ -15,6 +15,7 @@ class ExampleTest extends TestCase
 {
     public function testSomething(): void
     {
-        $this->assertTrue(true);
+        // @phpstan-ignore
+        self::assertTrue(true);
     }
 }
