@@ -15,7 +15,7 @@ class ExampleTest extends TestCase
 {
     public function testSomething(): void
     {
-        // @phpstan-ignore
+        // @phpstan-ignore-next-line
         self::assertTrue(true);
     }
 }
