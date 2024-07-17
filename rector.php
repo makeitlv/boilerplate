@@ -14,6 +14,9 @@ return RectorConfig::configure()
         __DIR__.'/src',
         __DIR__.'/tests',
     ])
+    ->withSkip([
+        __DIR__.'/assets/vendor',
+    ])
     ->withPhpSets()
     ->withSymfonyContainerXml(__DIR__.'/var/cache/dev/App_KernelDevDebugContainer.xml')
     ->withRules([
