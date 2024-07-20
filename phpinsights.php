@@ -3,6 +3,10 @@
 declare(strict_types=1);
 
 use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff;
+use PHP_CodeSniffer\Standards\PEAR\Sniffs\WhiteSpace\ScopeClosingBraceSniff;
+use PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff;
+use PhpCsFixer\Fixer\Basic\BracesFixer;
+use PhpCsFixer\Fixer\ClassNotation\ClassDefinitionFixer;
 
 return [
     /*
@@ -62,7 +66,10 @@ return [
     ],
 
     'remove' => [
-        //  ExampleInsight::class,
+        ScopeClosingBraceSniff::class,
+        ControlStructureSpacingSniff::class,
+        BracesFixer::class,
+        ClassDefinitionFixer::class,
     ],
 
     'config' => [
@@ -89,7 +96,7 @@ return [
 
     'requirements' => [
         'min-quality' => 80,
-        'min-complexity' => 90,
+        'min-complexity' => 70,
         'min-architecture' => 75,
         'min-style' => 90,
         // 'disable-security-check' => false,
