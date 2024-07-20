@@ -102,6 +102,7 @@
         }
     },
     "require-dev": {
+        "dg/bypass-finals": "^1.8",
         "friendsofphp/php-cs-fixer": "^3.59",
         "nunomaduro/phpinsights": "^2.11",
         "phpat/phpat": "^0.10.17",
