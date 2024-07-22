@@ -12,9 +12,9 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
     _instanceof:
-        App\Common\Application\Bus\Command\Command:
+        App\Common\Application\Bus\Command\CommandInterface:
             tags: [ 'messenger.message_handler', 'messenger.bus.command' ]
-        App\Common\Application\Bus\Query\Query:
+        App\Common\Application\Bus\Query\QueryInterface:
             tags: [ 'messenger.message_handler', 'messenger.bus.query' ]
 
     # makes classes in src/ available to be used as services

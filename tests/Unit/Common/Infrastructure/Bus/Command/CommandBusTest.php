@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Common\Infrastructure\Bus\Command;
 
-use App\Common\Application\Bus\Command\Command;
+use App\Common\Application\Bus\Command\CommandInterfaceInterface;
 use App\Common\Infrastructure\Bus\Command\CommandBus;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
@@ -21,7 +21,7 @@ class CommandBusTest extends TestCase
     public function testDispatchCallsMessageBusWithCommand(): void
     {
         $messageBusMock = $this->createMock(MessageBusInterface::class);
-        $commandMock = $this->createMock(Command::class);
+        $commandMock = $this->createMock(CommandInterfaceInterface::class);
 
         $messageBusMock->expects(self::once())
             ->method('dispatch')
@@ -37,7 +37,7 @@ class CommandBusTest extends TestCase
         $this->expectException(\Throwable::class);
 
         $messageBusMock = $this->createMock(MessageBusInterface::class);
-        $commandMock = $this->createMock(Command::class);
+        $commandMock = $this->createMock(CommandInterfaceInterface::class);
 
         $messageBusMock->method('dispatch')
             ->willThrowException(

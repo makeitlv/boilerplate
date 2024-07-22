@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Common\Infrastructure\Bus\Query;
 
-use App\Common\Application\Bus\Query\Query;
-use App\Common\Infrastructure\Bus\Query\QueryBus;
+use App\Common\Application\Bus\Query\QueryInterface;
+use App\Common\Infrastructure\Bus\Query\QueryBusInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
@@ -22,7 +22,7 @@ class QueryBusTest extends TestCase
     public function testAskDispatchesQueryAndReturnsResult(): void
     {
         $messageBusMock = $this->createMock(MessageBusInterface::class);
-        $queryMock = $this->createMock(Query::class);
+        $queryMock = $this->createMock(QueryInterface::class);
         $expectedResult = 'result';
 
         $messageBusMock->expects(self::once())
@@ -33,7 +33,7 @@ class QueryBusTest extends TestCase
             )
         ;
 
-        $queryBus = new QueryBus($messageBusMock);
+        $queryBus = new QueryBusInterface($messageBusMock);
         $result = $queryBus->ask($queryMock);
 
         self::assertEquals($expectedResult, $result);
@@ -44,7 +44,7 @@ class QueryBusTest extends TestCase
         $this->expectException(\Throwable::class);
 
         $messageBusMock = $this->createMock(MessageBusInterface::class);
-        $queryMock = $this->createMock(Query::class);
+        $queryMock = $this->createMock(QueryInterface::class);
 
         $messageBusMock->method('dispatch')
             ->willThrowException(
@@ -52,7 +52,7 @@ class QueryBusTest extends TestCase
             )
         ;
 
-        $queryBus = new QueryBus($messageBusMock);
+        $queryBus = new QueryBusInterface($messageBusMock);
         $queryBus->ask($queryMock);
     }
 }
