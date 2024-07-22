@@ -7,6 +7,7 @@ use PHP_CodeSniffer\Standards\PEAR\Sniffs\WhiteSpace\ScopeClosingBraceSniff;
 use PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff;
 use PhpCsFixer\Fixer\Basic\BracesFixer;
 use PhpCsFixer\Fixer\ClassNotation\ClassDefinitionFixer;
+use SlevomatCodingStandard\Sniffs\Classes\SuperfluousExceptionNamingSniff;
 
 return [
     /*
@@ -70,6 +71,7 @@ return [
         ControlStructureSpacingSniff::class,
         BracesFixer::class,
         ClassDefinitionFixer::class,
+        SuperfluousExceptionNamingSniff::class,
     ],
 
     'config' => [
