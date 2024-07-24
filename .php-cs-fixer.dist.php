@@ -19,6 +19,7 @@ return (new Config())
         'trailing_comma_in_multiline' => [
             'elements' => ['arguments', 'arrays', 'match', 'parameters'],
         ],
+        'phpdoc_to_comment' => false,
     ])
     ->setFinder($finder)
 ;
