@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Common\Infrastructure\Bus\Command;
+namespace App\Tests\Unit\Common\Infrastructure\Bus\Event;
 
-use App\Common\Application\Bus\Command\CommandInterface;
-use App\Common\Infrastructure\Bus\Command\CommandBus;
+use App\Common\Domain\Event\EventInterface;
+use App\Common\Infrastructure\Bus\Event\EventBus;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
@@ -16,20 +16,20 @@ use Symfony\Component\Messenger\MessageBusInterface;
  *
  * @coversNothing
  */
-class CommandBusTest extends TestCase
+class EventBusTest extends TestCase
 {
-    public function testDispatchCallsMessageBusWithCommand(): void
+    public function testDispatchCallsMessageBusWithEvent(): void
     {
         $messageBusMock = $this->createMock(MessageBusInterface::class);
-        $commandMock = $this->createMock(CommandInterface::class);
+        $eventMock = $this->createMock(EventInterface::class);
 
         $messageBusMock->expects(self::once())
             ->method('dispatch')
-            ->with($commandMock)
+            ->with($eventMock)
         ;
 
-        $commandBus = new CommandBus($messageBusMock);
-        $commandBus->dispatch($commandMock);
+        $EventBus = new EventBus($messageBusMock);
+        $EventBus->dispatch($eventMock);
     }
 
     public function testDispatchHandlesHandlerFailedException(): void
@@ -37,15 +37,15 @@ class CommandBusTest extends TestCase
         $this->expectException(\Throwable::class);
 
         $messageBusMock = $this->createMock(MessageBusInterface::class);
-        $commandMock = $this->createMock(CommandInterface::class);
+        $eventMock = $this->createMock(EventInterface::class);
 
         $messageBusMock->method('dispatch')
             ->willThrowException(
-                new HandlerFailedException(new Envelope($commandMock), [new \Exception()]),
+                new HandlerFailedException(new Envelope($eventMock), [new \Exception()]),
             )
         ;
 
-        $commandBus = new CommandBus($messageBusMock);
-        $commandBus->dispatch($commandMock);
+        $eventBus = new EventBus($messageBusMock);
+        $eventBus->dispatch($eventMock);
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Common\Infrastructure\Bus\Query;
 
 use App\Common\Application\Bus\Query\QueryInterface;
-use App\Common\Infrastructure\Bus\Query\QueryBusInterface;
+use App\Common\Infrastructure\Bus\Query\QueryBus;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
@@ -33,7 +33,7 @@ class QueryBusTest extends TestCase
             )
         ;
 
-        $queryBus = new QueryBusInterface($messageBusMock);
+        $queryBus = new QueryBus($messageBusMock);
         $result = $queryBus->ask($queryMock);
 
         self::assertEquals($expectedResult, $result);
@@ -52,7 +52,7 @@ class QueryBusTest extends TestCase
             )
         ;
 
-        $queryBus = new QueryBusInterface($messageBusMock);
+        $queryBus = new QueryBus($messageBusMock);
         $queryBus->ask($queryMock);
     }
 }

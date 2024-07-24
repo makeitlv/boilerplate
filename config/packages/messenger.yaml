@@ -22,6 +22,10 @@ framework:
                 default_middleware:
                     enabled: true
             messenger.query.bus: ~
+            messenger.event.bus:
+                default_middleware: 
+                    allow_no_handlers: true
+
             messenger.bus.default: [ ]
 
         routing:
@@ -31,6 +35,7 @@ framework:
 
             App\Common\Application\Bus\Command\CommandInterface: sync
             App\Common\Application\Bus\Query\QueryInterface: sync
+            App\Common\Domain\Event\EventInterface: async
 
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
