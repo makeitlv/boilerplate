@@ -37,6 +37,9 @@ final class DomainEventSubscriber implements EventSubscriber
         ];
     }
 
+    /**
+     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter
+     */
     public function postFlush(PostFlushEventArgs $postFlushEventArgs): void
     {
         foreach ($this->aggregates as $aggregate) {
@@ -77,7 +80,7 @@ final class DomainEventSubscriber implements EventSubscriber
     {
         $object = $lifecycleEventArgs->getObject();
 
-        if (!$object instanceof AggregateRoot) {
+        if (! $object instanceof AggregateRoot) {
             return;
         }
 

@@ -20,6 +20,7 @@ return (new Config())
             'elements' => ['arguments', 'arrays', 'match', 'parameters'],
         ],
         'phpdoc_to_comment' => false,
+        'not_operator_with_successor_space' => true,
     ])
     ->setFinder($finder)
 ;
