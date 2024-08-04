@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Domain\ValueObject;
+namespace App\Common\Domain\Model\ValueObject;
 
 use App\Common\Domain\Assert\Assert;
 

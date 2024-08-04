@@ -21,6 +21,8 @@ return (new Config())
         ],
         'phpdoc_to_comment' => false,
         'not_operator_with_successor_space' => true,
+        'yoda_style' => false,
+        'concat_space' => ['spacing' => 'one'],
     ])
     ->setFinder($finder)
 ;
