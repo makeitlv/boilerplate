@@ -15,10 +15,10 @@ final readonly class Author implements \Stringable
     public function __construct(string $firstname, string $lastname)
     {
         Assert::stringNotEmpty($firstname);
-        Assert::length($firstname, 64);
+        Assert::maxLength($firstname, 64);
 
         Assert::stringNotEmpty($lastname);
-        Assert::length($lastname, 64);
+        Assert::maxLength($lastname, 64);
 
         $this->firstname = $firstname;
         $this->lastname = $lastname;

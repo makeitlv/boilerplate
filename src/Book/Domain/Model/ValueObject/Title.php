@@ -13,7 +13,7 @@ final readonly class Title implements \Stringable
     public function __construct(string $title)
     {
         Assert::stringNotEmpty($title);
-        Assert::length($title, 255);
+        Assert::maxLength($title, 255);
 
         $this->title = $title;
     }

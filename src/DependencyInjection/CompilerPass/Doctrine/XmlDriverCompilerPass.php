@@ -24,7 +24,7 @@ final class XmlDriverCompilerPass implements CompilerPassInterface
 
         foreach ($mappingPaths as $namespace => $path) {
             $xmlDriverDef = new Definition(SimplifiedXmlDriver::class, [[$path => $namespace]]);
-            $driverServiceId = 'acme.xml_driver.' . md5($path);
+            $driverServiceId = 'doctrine.orm.xml_driver.' . md5($path);
 
             $containerBuilder->setDefinition($driverServiceId, $xmlDriverDef);
 
