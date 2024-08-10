@@ -15,7 +15,7 @@ if [ $# -gt 0 ]; then
         echo "Running php fixer..."
         docker compose exec php ./vendor/bin/php-cs-fixer fix --dry-run --diff
         echo "Running phpstan..."
-        docker compose exec php ./vendor/bin/phpstan analyse
+        docker compose exec php php -d memory_limit=-1 ./vendor/bin/phpstan analyse
         echo "Running phpinsights..."
         docker compose exec php ./vendor/bin/phpinsights analyse --no-interaction
         echo "Running rector..."
