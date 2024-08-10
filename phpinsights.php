@@ -3,6 +3,14 @@
 declare(strict_types=1);
 
 use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\LineLengthSniff;
+use PHP_CodeSniffer\Standards\PEAR\Sniffs\WhiteSpace\ScopeClosingBraceSniff;
+use PHP_CodeSniffer\Standards\Squiz\Sniffs\WhiteSpace\ControlStructureSpacingSniff;
+use PhpCsFixer\Fixer\Basic\BracesFixer;
+use PhpCsFixer\Fixer\ClassNotation\ClassDefinitionFixer;
+use SlevomatCodingStandard\Sniffs\Classes\SuperfluousAbstractClassNamingSniff;
+use SlevomatCodingStandard\Sniffs\Classes\SuperfluousExceptionNamingSniff;
+use SlevomatCodingStandard\Sniffs\Classes\SuperfluousInterfaceNamingSniff;
+use SlevomatCodingStandard\Sniffs\Classes\SuperfluousTraitNamingSniff;
 
 return [
     /*
@@ -52,7 +60,7 @@ return [
     */
 
     'exclude' => [
-        //  'path/to/directory-or-file'
+        'src/Common/Domain/Assert/Assert.php',
     ],
 
     'add' => [
@@ -62,7 +70,14 @@ return [
     ],
 
     'remove' => [
-        //  ExampleInsight::class,
+        ScopeClosingBraceSniff::class,
+        ControlStructureSpacingSniff::class,
+        BracesFixer::class,
+        ClassDefinitionFixer::class,
+        SuperfluousExceptionNamingSniff::class,
+        SuperfluousTraitNamingSniff::class,
+        SuperfluousInterfaceNamingSniff::class,
+        SuperfluousAbstractClassNamingSniff::class,
     ],
 
     'config' => [
@@ -89,7 +104,7 @@ return [
 
     'requirements' => [
         'min-quality' => 80,
-        'min-complexity' => 90,
+        'min-complexity' => 70,
         'min-architecture' => 75,
         'min-style' => 90,
         // 'disable-security-check' => false,

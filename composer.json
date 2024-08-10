@@ -41,12 +41,14 @@
         "symfony/string": "7.1.*",
         "symfony/translation": "7.1.*",
         "symfony/twig-bundle": "7.1.*",
+        "symfony/uid": "7.1.*",
         "symfony/ux-turbo": "^2.18",
         "symfony/validator": "7.1.*",
         "symfony/web-link": "7.1.*",
         "symfony/yaml": "7.1.*",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+        "webmozart/assert": "^1.11"
     },
     "config": {
         "allow-plugins": {
@@ -102,6 +104,7 @@
         }
     },
     "require-dev": {
+        "dg/bypass-finals": "^1.8",
         "friendsofphp/php-cs-fixer": "^3.59",
         "nunomaduro/phpinsights": "^2.11",
         "phpat/phpat": "^0.10.17",
@@ -112,6 +115,7 @@
         "phpstan/phpstan-phpunit": "^1.4",
         "phpstan/phpstan-strict-rules": "^1.6",
         "phpstan/phpstan-symfony": "^1.4",
+        "phpstan/phpstan-webmozart-assert": "^1.2",
         "phpunit/php-code-coverage": "^9.2",
         "phpunit/phpunit": "^9.5",
         "rector/rector": "^1.1",

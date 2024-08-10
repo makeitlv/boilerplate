@@ -1,0 +1,15 @@
+services:                
+    App\Common\Infrastructure\Bus\Command\CommandBus:
+        public: true
+        arguments:
+            $messageBus: '@messenger.command.bus'
+            
+    App\Common\Infrastructure\Bus\Query\QueryBus:
+        public: true
+        arguments:
+            $messageBus: '@messenger.query.bus'
+            
+    App\Common\Infrastructure\Bus\Event\EventBus:
+        public: true
+        arguments:
+            $messageBus: '@messenger.event.bus'

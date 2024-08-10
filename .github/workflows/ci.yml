@@ -1,9 +1,7 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
+  push: ~
   pull_request: ~
   workflow_dispatch: ~
 
@@ -65,7 +63,7 @@ jobs:
       - name: Run PHP Fixer
         run: docker compose exec php ./vendor/bin/php-cs-fixer fix --dry-run --diff
       - name: Run phpstan
-        run: docker compose exec php ./vendor/bin/phpstan analyse
+        run: docker compose exec php php -d memory_limit=-1 ./vendor/bin/phpstan analyse
       - name: Run phpinsights
         run: docker compose exec php ./vendor/bin/phpinsights analyse --no-interaction
       - name: Run rector
