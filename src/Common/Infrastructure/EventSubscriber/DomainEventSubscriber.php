@@ -23,10 +23,10 @@ final class DomainEventSubscriber implements EventSubscriber
         private readonly EventBusInterface $eventBus,
     ) {}
 
-    #[\Override]
     /**
      * @return array<string>
      */
+    #[\Override]
     public function getSubscribedEvents(): array
     {
         return [

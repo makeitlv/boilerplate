@@ -21,6 +21,8 @@ framework:
             messenger.command.bus:
                 default_middleware:
                     enabled: true
+                middleware:
+                    - messenger.middleware.doctrine_transaction
             messenger.query.bus: ~
             messenger.event.bus:
                 default_middleware: 

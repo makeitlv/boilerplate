@@ -12,11 +12,11 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
     _instanceof:
-        App\Common\Application\Bus\Command\CommandInterface:
+        App\Common\Application\Bus\Command\CommandHandlerInterface:
             tags: [ 'messenger.message_handler', 'messenger.bus.command' ]
-        App\Common\Application\Bus\Query\QueryInterface:
+        App\Common\Application\Bus\Query\QueryHandlerInterface:
             tags: [ 'messenger.message_handler', 'messenger.bus.query' ]
-        App\Common\Domain\Event\EventInterface:
+        App\Common\Application\Bus\Event\EventHandlerInterface:
             tags: [ 'messenger.message_handler', 'messenger.bus.event' ]
 
     # makes classes in src/ available to be used as services
@@ -27,6 +27,18 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+                
+    App\Common\Infrastructure\Bus\Command\CommandBus:
+        arguments:
+            $messageBus: '@messenger.command.bus'
+            
+    App\Common\Infrastructure\Bus\Query\QueryBus:
+        arguments:
+            $messageBus: '@messenger.query.bus'
+            
+    App\Common\Infrastructure\Bus\Event\EventBus:
+        arguments:
+            $messageBus: '@messenger.event.bus'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

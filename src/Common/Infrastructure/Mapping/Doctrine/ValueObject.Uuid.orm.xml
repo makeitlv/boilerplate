@@ -5,8 +5,6 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <embeddable name="App\Common\Domain\Model\ValueObject\Uuid">
-        <id name="uuid" type="uuid">
-            <generator strategy="IDENTITY"/>
-        </id>
+        <id name="uuid" type="uuid"/>
     </embeddable>
 </doctrine-mapping>

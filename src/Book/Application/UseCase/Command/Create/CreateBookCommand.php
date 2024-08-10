@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Book\Application\UseCase\Command\Create;
 
-final readonly class CreateBookCommand
+use App\Common\Application\Bus\Command\CommandInterface;
+
+final readonly class CreateBookCommand implements CommandInterface
 {
     public function __construct(
         public string $uuid,

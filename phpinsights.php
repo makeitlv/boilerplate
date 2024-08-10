@@ -60,7 +60,7 @@ return [
     */
 
     'exclude' => [
-        //  'path/to/directory-or-file'
+        'src/Common/Domain/Assert/Assert.php',
     ],
 
     'add' => [
