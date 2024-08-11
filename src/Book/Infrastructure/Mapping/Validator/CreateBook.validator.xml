@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+        https://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="App\Book\Application\UseCase\Command\Create\CreateBookCommand">
+        <property name="uuid">
+            <constraint name="NotBlank"/>
+            <constraint name="Uuid"/>
+        </property>
+        <property name="title">
+            <constraint name="NotBlank"/>
+        </property>
+        <property name="description">
+            <constraint name="NotBlank"/>
+        </property>
+        <property name="authorFirstName">
+            <constraint name="NotBlank"/>
+        </property>
+        <property name="authorLastName">
+            <constraint name="NotBlank"/>
+        </property>
+    </class>
+</constraint-mapping>

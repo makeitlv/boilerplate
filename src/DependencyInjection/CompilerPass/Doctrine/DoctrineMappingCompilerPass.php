@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-final class XmlDriverCompilerPass implements CompilerPassInterface
+final class DoctrineMappingCompilerPass implements CompilerPassInterface
 {
     #[\Override]
     public function process(ContainerBuilder $containerBuilder): void
@@ -51,7 +51,7 @@ final class XmlDriverCompilerPass implements CompilerPassInterface
                 continue;
             }
 
-            if ($file->getExtension() === 'xml') {
+            if ($file->getExtension() === 'xml' && str_contains($file->getPath(), 'Mapping/Doctrine')) {
                 $relativePath = str_replace($srcDir . '/', '', $file->getPath());
                 $parts = explode('/', $relativePath);
                 $domain = $parts[0];

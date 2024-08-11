@@ -22,7 +22,9 @@ framework:
                 default_middleware:
                     enabled: true
                 middleware:
+                    - messenger.middleware.validation
                     - messenger.middleware.doctrine_transaction
+                    - messenger.middleware.doctrine_close_connection
             messenger.query.bus: ~
             messenger.event.bus:
                 default_middleware: 
