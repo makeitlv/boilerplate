@@ -61,6 +61,8 @@ return [
 
     'exclude' => [
         'src/Common/Domain/Assert/Assert.php',
+        'migrations',
+        'fixtures',
     ],
 
     'add' => [

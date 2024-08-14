@@ -11,9 +11,13 @@ use Doctrine\Persistence\ObjectManager;
 
 final class AppFixtures extends Fixture implements DependentFixtureInterface
 {
-    public function load(ObjectManager $manager): void {}
+    #[\Override]
+    public function load(ObjectManager $objectManager): void {}
 
     #[\Override]
+    /**
+     * @return string<class-string>[]
+     */
     public function getDependencies(): array
     {
         return [

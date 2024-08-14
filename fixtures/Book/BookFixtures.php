@@ -14,18 +14,19 @@ final class BookFixtures extends Fixture
 {
     public function __construct(private readonly CommandBusInterface $commandBus) {}
 
-    public function load(ObjectManager $manager): void
+    #[\Override]
+    public function load(ObjectManager $objectManager): void
     {
-        $faker = Factory::create();
+        $generator = Factory::create();
 
         for ($i = 0; $i < 100; ++$i) {
             $this->commandBus->dispatch(
                 new CreateBookCommand(
-                    $faker->uuid,
-                    $faker->sentence,
-                    $faker->sentence,
-                    $faker->firstName,
-                    $faker->lastName,
+                    $generator->uuid,
+                    $generator->sentence,
+                    $generator->sentence,
+                    $generator->firstName,
+                    $generator->lastName,
                 ),
             );
         }
