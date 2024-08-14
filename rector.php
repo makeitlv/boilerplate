@@ -13,6 +13,8 @@ return RectorConfig::configure()
         __DIR__ . '/public',
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/fixtures',
+        __DIR__ . '/migrations',
     ])
     ->withSkip([
         __DIR__ . '/assets/vendor',
