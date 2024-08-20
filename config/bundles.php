@@ -15,6 +15,7 @@ use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
 use Symfony\UX\StimulusBundle\StimulusBundle;
 use Symfony\UX\Turbo\TurboBundle;
+use Symfonycasts\TailwindBundle\SymfonycastsTailwindBundle;
 use Twig\Extra\TwigExtraBundle\TwigExtraBundle;
 
 return [
@@ -32,4 +33,5 @@ return [
     MakerBundle::class => ['dev' => true],
     DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
     DAMADoctrineTestBundle::class => ['test' => true],
+    SymfonycastsTailwindBundle::class => ['all' => true],
 ];

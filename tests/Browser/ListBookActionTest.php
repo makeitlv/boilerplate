@@ -2,25 +2,36 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Feature\Book\Application\UseCase\Query;
+namespace App\Tests\Browser;
 
 use App\Book\Application\UseCase\Command\Create\CreateBookCommand;
-use App\Book\Application\UseCase\Query\List\ListBookQuery;
-use App\Book\Domain\ReadModel\BookRead;
 use App\Common\Application\Bus\Command\CommandBusInterface;
-use App\Common\Application\Bus\Query\QueryBusInterface;
 use Faker\Factory;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\Panther\PantherTestCase;
 
 /**
  * @internal
  *
  * @coversNothing
  */
-class ListBookQueryHandlerTest extends KernelTestCase
+class ListBookActionTest extends PantherTestCase
 {
-    public function testListBooks(): void
+    #[\Override]
+    public static function setUpBeforeClass(): void
     {
+        StaticDriver::setKeepStaticConnections(false);
+    }
+
+    #[\Override]
+    public static function tearDownAfterClass(): void
+    {
+        StaticDriver::setKeepStaticConnections(true);
+    }
+
+    public function testBooksExists(): void
+    {
+        $client = static::createPantherClient();
+
         $generator = Factory::create();
 
         /** @var CommandBusInterface $commandBus */
@@ -39,13 +50,10 @@ class ListBookQueryHandlerTest extends KernelTestCase
             );
         }
 
-        /** @var QueryBusInterface $queryBus */
-        $queryBus = self::getContainer()->get(QueryBusInterface::class);
+        $crawler = $client->request('GET', '/');
 
-        /** @var array<int, mixed> $books */
-        $books = $queryBus->ask(new ListBookQuery());
+        $books = $crawler->filter('#books > *');
 
-        self::assertCount($totalBooks, $books);
-        self::assertInstanceOf(BookRead::class, end($books));
+        self::assertEquals($totalBooks, $books->count());
     }
 }

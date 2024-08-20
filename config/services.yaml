@@ -30,6 +30,9 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+            
+    App\Book\Presentation\Controller\ListBookAction:
+        tags: [ 'controller.service_arguments' ]
                 
     App\Common\Infrastructure\Bus\Command\CommandBus:
         arguments:
