@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use DAMA\DoctrineTestBundle\DAMADoctrineTestBundle;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle;
 use Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle;
@@ -30,4 +31,5 @@ return [
     MonologBundle::class => ['all' => true],
     MakerBundle::class => ['dev' => true],
     DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
+    DAMADoctrineTestBundle::class => ['test' => true],
 ];

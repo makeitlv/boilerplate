@@ -44,7 +44,7 @@ class ListBookQueryHandlerTest extends KernelTestCase
         /** @var QueryBusInterface $queryBus */
         $queryBus = self::getContainer()->get(QueryBusInterface::class);
 
-        /** @var array<int, BookRead> $books */
+        /** @var array<int, mixed> $books */
         $books = $queryBus->ask(new ListBookQuery());
 
         self::assertCount($totalBooks, $books);
