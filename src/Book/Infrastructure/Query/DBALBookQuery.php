@@ -14,11 +14,22 @@ final readonly class DBALBookQuery extends AbstractDBALQuery implements BookQuer
      * @return array<BookRead>
      */
     #[\Override]
-    public function fetchBooks(): array
+    public function fetchBooks(int $page, int $limit): array
     {
+        $totalRecords = $this->queryBuilder->select('COUNT(*)')
+            ->from('books')
+            ->executeQuery()
+            ->fetchOne()
+        ;
+
+        $totalPages = (int) ceil($totalRecords / $limit);
+        $page = min($page, $totalPages);
+
         /** @var array<array-key, array<string, string>> $books */
         $books = $this->queryBuilder->select('*')
             ->from('books')
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
             ->executeQuery()
             ->fetchAllAssociative()
         ;

@@ -19,6 +19,9 @@ final readonly class ListBookQueryHandler implements QueryHandlerInterface
      */
     public function __invoke(ListBookQuery $listBookQuery): array
     {
-        return $this->bookQuery->fetchBooks();
+        return $this->bookQuery->fetchBooks(
+            $listBookQuery->page->value(),
+            $listBookQuery->limit->value(),
+        );
     }
 }

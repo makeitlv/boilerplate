@@ -6,6 +6,7 @@ namespace App\Tests\Browser;
 
 use App\Book\Application\UseCase\Command\Create\CreateBookCommand;
 use App\Common\Application\Bus\Command\CommandBusInterface;
+use DAMA\DoctrineTestBundle\Doctrine\DBAL\StaticDriver;
 use Faker\Factory;
 use Symfony\Component\Panther\PantherTestCase;
 

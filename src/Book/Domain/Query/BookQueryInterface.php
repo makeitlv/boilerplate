@@ -11,5 +11,5 @@ interface BookQueryInterface
     /**
      * @return array<BookRead>
      */
-    public function fetchBooks(): array;
+    public function fetchBooks(int $page, int $limit): array;
 }
