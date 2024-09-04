@@ -19,8 +19,6 @@ class DeleteBookCommandHandlerTest extends KernelTestCase
 {
     public function testDeleteBook(): void
     {
-        self::bootKernel();
-
         $createBookCommand = new CreateBookCommand(
             $uuid = '123e4567-e89b-12d3-a456-426614174001',
             'Clean Code',
@@ -65,7 +63,5 @@ class DeleteBookCommandHandlerTest extends KernelTestCase
         ;
 
         self::assertFalse($book);
-
-        static::ensureKernelShutdown();
     }
 }

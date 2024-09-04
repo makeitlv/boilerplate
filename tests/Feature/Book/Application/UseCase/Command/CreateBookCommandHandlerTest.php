@@ -18,8 +18,6 @@ class CreateBookCommandHandlerTest extends KernelTestCase
 {
     public function testCreateBook(): void
     {
-        self::bootKernel();
-
         $createBookCommand = new CreateBookCommand(
             $uuid = '123e4567-e89b-12d3-a456-426614174000',
             $title = 'Clean Code',
@@ -52,7 +50,5 @@ class CreateBookCommandHandlerTest extends KernelTestCase
         self::assertEquals($description, $book['description']);
         self::assertEquals($firstname, $book['firstname']);
         self::assertEquals($lastname, $book['lastname']);
-
-        static::ensureKernelShutdown();
     }
 }

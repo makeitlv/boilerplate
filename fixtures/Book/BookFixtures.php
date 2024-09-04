@@ -22,11 +22,11 @@ final class BookFixtures extends Fixture
         for ($i = 0; $i < 100; ++$i) {
             $this->commandBus->dispatch(
                 new CreateBookCommand(
-                    $generator->uuid,
-                    $generator->sentence,
-                    $generator->sentence,
-                    $generator->firstName,
-                    $generator->lastName,
+                    $generator->uuid(),
+                    $generator->sentence(),
+                    $generator->sentence(),
+                    $generator->firstName(),
+                    $generator->lastName(),
                 ),
             );
         }
