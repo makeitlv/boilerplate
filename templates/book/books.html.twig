@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="flex flex-wrap -mx-2" id="books">
-        {% for book in books %}
+        {% for book in paginationData.items %}
             <div class="w-full sm:w-1/2 md:w-1/3 self-stretch p-2 mb-2">
                 <div class="rounded shadow-md h-full">
                     <a href="#">
@@ -25,16 +25,39 @@
         {% endfor %}
     </div>
 
-    {# <div class="mt-3 flow-root">
-        <a href="#"
-           class="float-left bg-white font-semibold py-2 px-4 border rounded shadow-md text-slate-800 cursor-default text-opacity-50"
-        >
-            {% trans %}Previous{% endtrans %}
-        </a>
-        <a href="#"
-           class="float-right bg-white font-semibold py-2 px-4 border rounded shadow-md text-slate-800 cursor-pointer hover:bg-slate-100"
-        >
-            {% trans %}Next{% endtrans %}
-        </a>
-    </div> #}
+    <div class="mt-3 flow-root">
+        {% if paginationData.currentPage is not same as 1 %}
+            <a
+                href="{{ path('book.list', { page: paginationData.previousPage }) }}"
+                class="float-left bg-white font-semibold py-2 px-4 border rounded shadow-md text-slate-800 cursor-pointer hover:bg-slate-100"
+            >
+                {% trans %}Previous{% endtrans %}
+            </a>
+        {% else %}
+            <a
+                role="link"
+                aria-disabled="true"
+                class="float-left bg-white font-semibold py-2 px-4 border rounded shadow-md text-slate-800 cursor-default text-opacity-50"
+            >
+                {% trans %}Previous{% endtrans %}
+            </a>
+        {% endif %}
+
+        {% if paginationData.currentPage is not same as paginationData.totalPages %}
+            <a
+                href="{{ path('book.list', { page: paginationData.nextPage }) }}"
+                class="float-right bg-white font-semibold py-2 px-4 border rounded shadow-md text-slate-800 cursor-pointer hover:bg-slate-100"
+            >
+                {% trans %}Next{% endtrans %}
+            </a>
+        {% else %}
+            <a
+                role="link"
+                aria-disabled="true"
+                class="float-right bg-white font-semibold py-2 px-4 border rounded shadow-md text-slate-800 cursor-default text-opacity-50"
+            >
+                {% trans %}Next{% endtrans %}
+            </a>
+        {% endif %}
+    </div>
 {% endblock %}
