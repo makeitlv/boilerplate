@@ -9,6 +9,7 @@ use App\Book\Application\UseCase\Query\List\ListBookQuery;
 use App\Book\Domain\ReadModel\BookRead;
 use App\Common\Application\Bus\Command\CommandBusInterface;
 use App\Common\Application\Bus\Query\QueryBusInterface;
+use App\Common\Domain\ReadModel\PaginationData;
 use Faker\Factory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -42,10 +43,12 @@ class ListBookQueryHandlerTest extends KernelTestCase
         /** @var QueryBusInterface $queryBus */
         $queryBus = self::getContainer()->get(QueryBusInterface::class);
 
-        /** @var array<int, mixed> $books */
-        $books = $queryBus->ask(new ListBookQuery());
+        /** @var PaginationData<BookRead> $paginationData */
+        $paginationData = $queryBus->ask(new ListBookQuery());
+        $books = $paginationData->items;
 
         self::assertCount($totalBooks, $books);
-        self::assertInstanceOf(BookRead::class, end($books));
+        self::assertEquals(1, $paginationData->currentPage);
+        self::assertEquals(1, $paginationData->totalPages);
     }
 }
