@@ -43,7 +43,7 @@ class ListBookQueryHandlerTest extends KernelTestCase
         /** @var QueryBusInterface $queryBus */
         $queryBus = self::getContainer()->get(QueryBusInterface::class);
 
-        /** @var PaginationData $paginationData */
+        /** @var PaginationData<BookRead> $paginationData */
         $paginationData = $queryBus->ask(new ListBookQuery());
         $books = $paginationData->items;
 
