@@ -48,6 +48,7 @@ class ListBookQueryHandlerTest extends KernelTestCase
         $books = $paginationData->items;
 
         self::assertCount($totalBooks, $books);
-        self::assertInstanceOf(BookRead::class, end($books));
+        self::assertEquals(1, $paginationData->currentPage);
+        self::assertEquals(1, $paginationData->totalPages);
     }
 }
